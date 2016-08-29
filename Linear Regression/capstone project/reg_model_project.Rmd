@@ -1,0 +1,143 @@
+---
+title: "Modeling and prediction for movies"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+library(MASS)
+```
+
+### Load data
+
+Make sure your data and R Markdown files are in the same directory. When loaded
+your data file will be called `movies`. Delete this note when before you submit 
+your work. 
+
+```{r load-data}
+load("movies.Rdata")
+```
+
+
+
+* * *
+
+## Part 1: Data
+The data contains 651 randomly sampled movies released before 2016. The study has generabizability but does not have causality. Because the data is randomly sampled and the study is an observational study.
+* * *
+
+## Part 2: Research question
+what kind of variable affect imbd rating. Are imbd ratings infulenced by some other indicators besides movies' contents? And what are these indicators?
+
+It is interesting to know whether movie's rating depends on its quality or some other kind of staff.
+
+
+* * *
+
+## Part 3: Exploratory data analysis
+First, let's explore the distribution of the imdb rating.
+```{r}
+ggplot(movies, aes(x = imdb_rating)) + geom_histogram(binwidth = 0.2)
+summary(movies$imdb_rating)
+```
+The distribution of imdb_rating in the data is left skewed, most movies get a rating between 6 and 7. The mean of imdb rating is 6.5 and median is 6.6. As the 3rd quantile is 7.3, we could say that movie with a rating higher than 7.3 could be considered a good moive.
+
+Consider the correlation with audience_score and imdb_rating.
+```{r}
+ggplot(data = movies, aes(x = audience_score, y = imdb_rating))  + 
+  geom_point(aes(colour = factor(top200_box))) + 
+  geom_smooth(method = "lm")
+```
+From the scatter plot, we could see a strong linear correlation between aduience_score and imdb_rating.
+```{r}
+lm1 <- lm(imdb_rating ~ audience_score, movies)
+summary(lm1)
+```
+The p-value is close to 0, so the audience_score could be consider a significant predictor for imdb_rating.
+
+* * *
+
+## Part 4: Modeling
+I would remove the following fields from the model: title, studio, director, actor1, actor2, actor3, actor4, actor5, imdb_url, rt_url. Because some of these fields contains too many levels which is very difficult to handle, like director and actor. And some of these fields make no difference for imdb_rating.
+```{r}
+data <- movies %>% dplyr::select(-title, -studio, -director, -actor1, -actor2,
+                          -actor3, -actor4, -actor5, -imdb_url, -rt_url)
+data <- na.omit(data)
+```
+
+As there are many predictors to choice, we use backward-selection with p-value. Because if we use forward-selection, we need to compare many models each time we go forward.
+```{r}
+full_lm <-  lm(imdb_rating ~ ., data = data)
+summary(full_lm)
+```
+
+let's do backward selection, exculde variable with the highest p-value.
+```{r}
+library(MASS)
+step <- stepAIC(full_lm, direction="backward")
+step$anova # display results
+```
+
+The final model is:
+imdb_rating ~ genre + runtime + thtr_rel_month + dvd_rel_day + 
+    imdb_num_votes + critics_rating + critics_score + audience_rating + 
+    audience_score
+    
+**Model diagnostics**
+
+1. Check the linear relationship between x(numeric variable) and y.
+```{r}
+# diagnostic plots 
+lm <- lm(imdb_rating ~ genre + runtime + thtr_rel_month + dvd_rel_day + 
+    imdb_num_votes + critics_rating + critics_score + audience_rating + 
+    audience_score, data = data)
+layout(matrix(c(1,2,3,4),2,2)) # optional 4 graphs/page 
+plot(data$runtime, lm$residuals)
+plot(log(data$imdb_num_votes), lm$residuals)
+plot(data$critics_score, lm$residuals)
+plot(data$audience_score, lm$residuals)
+```
+
+**result**: the residuals is randomly distributed near zero for all four numeric variable. So there are linear relationship between x and y.
+
+
+Then, check other conditions.
+```{r}
+layout(matrix(c(1,2,3,4),2,2))
+plot(lm$fitted.values, lm$residuals)
+qqnorm(lm$residuals)
+qqline(lm$residuals)
+plot(lm$residuals)
+```
+
+2. From the qq plot, we can see that the residuals are nearly normal distributed near 0.
+3. From the plot of fitted-value against residuals, we could say that the model has constant varant of residuals.
+4. From the plot of residuals, we could say the model has independence of residuals.
+
+
+**Interpretation of model coefficients**
+```{r}
+summary(lm)
+```
+Adjusted R-squared is 0.8298, so 82.98% variablity of the response variable is expalined by the model.
+Most coefficients in the model is statistical significiant refering to the p-value. For interpretation, take genre for example. Animation is rated lowwer with other variable remain constant. 
+
+* * *
+
+## Part 5: Prediction
+Recently, I just watch a very good animation "Ki mi no na wa.". I want to predict the rating of it.
+
+* * *
+
+## Part 6: Conclusion
+
