@@ -33,7 +33,8 @@ load("movies.Rdata")
 * * *
 
 ## Part 1: Data
-The data contains 651 randomly sampled movies released before 2016. The study has generabizability but does not have causality. Because the data is randomly sampled and the study is an observational study.
+The data contains 651 randomly sampled movies released before 2016. So study based on the data would has generablizability. However, movies are rated by volunteers, so the data may contain volunteer bais. Data is not generated from experiment, it could only be used in oberservational study. So causality can not found from the data.
+
 * * *
 
 ## Part 2: Research question
@@ -135,7 +136,29 @@ Most coefficients in the model is statistical significiant refering to the p-val
 * * *
 
 ## Part 5: Prediction
-Recently, I just watch a very good animation "Ki mi no na wa.". I want to predict the rating of it.
+Recently, I just watch a very good animation "train to busan". I want to predict the rating of it.
+
+The final model is:
+imdb_rating ~ genre + runtime + thtr_rel_month + dvd_rel_day + 
+    imdb_num_votes + critics_rating + critics_score + audience_rating + 
+    audience_score
+
+- genre: Action
+- runtime: 118 min 
+- thtr_rel_month: 7
+- dvd_rel_day: NA
+- imdb_num_votes: 11843
+- critics_rating: Fresh
+- critics_score: 93
+- audience_rating: Upright
+- audience_score: 90
+```{r}
+newdata <- data.frame(genre = "Action & Adventure", runtime = 118, thtr_rel_month = 7, dvd_rel_day = 0, imdb_num_votes = 11843, critics_rating = "Fresh", critics_score = 93, audience_rating = "Upright", audience_score = 90)
+predict(lm, newdata)
+```
+
+The predicted score is 7.72, and the real score is 7.8. The result shows that the model made a very good prediction to the imdb score of the movie
+"Train to busan".
 
 * * *
 
