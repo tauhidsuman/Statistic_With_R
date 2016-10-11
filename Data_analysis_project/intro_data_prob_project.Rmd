@@ -1,0 +1,142 @@
+---
+title: "Exploring the BRFSS data"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+### Load data
+
+Make sure your data and R Markdown files are in the same directory. When loaded
+your data file will be called `brfss2013`. Delete this note when before you submit 
+your work. 
+
+```{r load-data}
+load("/Users/xbj/github/Statistics With R/Data_analysis_project/brfss2013.RData")
+```
+
+
+
+* * *
+
+## Part 1: Data
+BRFSS is an ongoing surveillance system designed to measure behavioral risk factors for the non-institutionalized adult population (18 years of age and older) residing in the US. The BRFSS was initiated in 1984, with 15 states collecting surveillance data on risk behaviors through monthly telephone interviews.Since 2011, BRFSS conducts both landline telephone- and cellular telephone-based surveys. In conducting the BRFSS landline telephone survey, interviewers collect data from a randomly selected adult in a household. In conducting the cellular telephone version of the BRFSS questionnaire, interviewers collect data from an adult who participates by using a cellular telephone and resides in a private residence or college housing.
+
+Knowing the collection method, we could discuss the scope of inference. The data is from randomly selected adult's response, so it shares generalizability. But, as the study is an observation study, we can not get causal inference from the data.
+* * *
+
+## Part 2: Research questions
+
+**Research quesion 1: what's the distribution of people's height in America?**
+I am from China and now live in Japan. My image about American is tall and strong, but that's just image. So I want to test my opion from statistical evidence.
+
+**Research quesion 2: What's the relationship of seelping time and health status in man and woman?**
+Many people say that sleep 8 hours every day is good for health. But it is just anecdotal evidence. I want to test it in statistical aspect. And I also want to know what's the difference between man and women.
+
+**Research quesion 3: What's the relationship between health status, income level and satisfaction with life?**
+Every one want to live a satisfied life. Improve income and improve health status helps?
+
+
+* * *
+
+## Part 3: Exploratory data analysis
+
+NOTE: Insert code chunks as needed by clicking on the "Insert a new code chunk" 
+button (green button with orange arrow) above. Make sure that your code is visible
+in the project you submit. Delete this note when before you submit your work.
+
+**Research quesion 1: what's the distribution of people's height in America?**
+
+```{r}
+data1 <- brfss2013 %>% select(sex,htm4)
+data1$height3 <- as.numeric(data1$htm4)*100
+data1 <- data1 %>% filter(htm4<=220) %>% filter(htm4>=100)
+data1 <- na.omit(data1) 
+```
+```{r}
+ggplot(data = data1, aes(x=htm4,fill = sex)) + 
+  geom_histogram(binwidth=1, aes(y=..density..)) +
+  xlab("Height")
+```
+
+```{r}
+ggplot(data1, aes(x=sex, y= htm4)) + geom_boxplot() + ylab("Height") +
+  xlab("Sex")
+```
+
+** The median height of men in respondents is about 177, and for women, the number is 162. That is much taller than china. In which the median height of men is 167.1 cm,and 155.8 cm of women.**
+
+**Research quesion 2:What's the relationship of seelping time and health status in man and woman?**
+The sleep time variable is numerical, and health status varaiable is categorical. So I choose boxplot to show the difference of sleep time's distributions among different health status.
+```{r}
+data2 <- brfss2013 %>% select(genhlth, sleptim1, sex)
+data2 <- na.omit(data2)
+data2 <- data2 %>% filter(sleptim1 <= 24)
+```
+
+```{r}
+ggplot(data = data2, aes(x= genhlth, y= sleptim1)) + 
+  geom_boxplot(aes(color=sex))  + xlab("Health Status") +
+  ylab("Sleep Time(h)")
+```
+
+**The x axis shows the category of health status, y axis is the sleeping time. red boxplot shows the result of man, and green one shows the result of woman. First we consider the result of man. we can see there is no obvious difference in sleep time between excellent, very good, good, fair health status. Although the median of man who state poor health status shows no difference with others, the IQR is bigger. which suggest more poor health man sleep less than others. Female's result shows more clearly tendency. The median sleep time of woman who state poor health is much less than others.**
+
+
+
+**Research quesion 3: What's the relatinship between health status, income level and satisfaction with life?**
+
+```{r}
+data3 <- brfss2013 %>% select(genhlth, lsatisfy, income2)
+data3 <- na.omit(data3)
+```
+```{r}
+ggMMplot <- function(var1, var2){
+  require(ggplot2)
+  levVar1 <- length(levels(var1))
+  levVar2 <- length(levels(var2))
+  
+  jointTable <- prop.table(table(var1, var2))
+  plotData <- as.data.frame(jointTable)
+  plotData$marginVar1 <- prop.table(table(var1))
+  plotData$var2Height <- plotData$Freq / plotData$marginVar1
+  plotData$var1Center <- c(0, cumsum(plotData$marginVar1)[1:levVar1 -1]) +
+    plotData$marginVar1 / 2
+  
+  ggplot(plotData, aes(var1Center, var2Height)) +
+    geom_bar(stat = "identity", aes(width = marginVar1, fill = var2), col = "White") +
+    geom_text(aes(label = as.character(var1), x = var1Center, y = 1.05), size = 4) 
+}
+ggMMplot(data3$genhlth, data3$lsatisfy)+ 
+    xlab("Health Status") +
+    ylab("Satisfaction With Life")
+
+```
+** From the mosaicplot, about 65% people who state excellent health status say they are very satisfied with their life. The pecentage is descenting in people who state poorer health satus. The result shows that healthy people may feel more satisfied with their life.**
+
+```{r}
+ggMMplot(data3$genhlth, data3$income2) +
+  xlab("Health Status") +
+  ylab("Income Level")
+```
+** From the mosaicplot, about 35% people who state $75,000 or more income say they are very satisfied with their life. The pecentage is descenting in people who less income. The result shows that wealthy people may feel more satisfied with their life.**
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<!-- saved from url=(0160)https://s3.amazonaws.com/coursera-uploads/peer-review/u3goXsk9EeWT3Aqsn0BGnQ/3b6bf2660702b7fd2b32046956958838/statsr_course2_statistical-inferences-project.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Project - Statistical Inferences</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="./Classmate_work_files/MathJax.js">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">/* This is not a zero-length file! */</style><style type="text/css">/* This is not a zero-length file! */</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body cz-shortcut-listen="true"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<p>Title: Statistical inference with the GSS data<br>
+Author: A. Maity<br>
+Date: July 2, 2016   </p>
+
+<h2>Project - Statistical Inferences</h2>
+
+<h3>Load packages</h3>
+
+<pre><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">ggplot2</span><span class="paren">)</span>
+<span class="keyword">library</span><span class="paren">(</span><span class="identifier">dplyr</span><span class="paren">)</span>
+<span class="keyword">library</span><span class="paren">(</span><span class="identifier">statsr</span><span class="paren">)</span>
+</code></pre>
+
+<h3>Load data</h3>
+
+<pre><code class="r"><span class="identifier">load</span><span class="paren">(</span><span class="string">"C:/Users/amaity1/Videos/R Programming - Aloke/data/gss.Rdata"</span><span class="paren">)</span>
+</code></pre>
+
+<hr>
+
+<h2>Part 1: About Data</h2>
+
+<p></p><li style="text-align: justify;" markdown="1">The <strong>General Social Survey (GSS)</strong> project conducts by <strong>NORC at the University of Chicago</strong> collects data every two years (2014, 2016, etc.), and made available to the research community and the public as soon as possible after data collection is complete.</li><p></p>
+
+<p></p><li style="text-align: justify;" markdown="1">Since 1972, the General Social Survey (GSS) has been monitoring societal change and studying the growing complexity of American society. The GSS aims to gather data on contemporary American society in order to monitor and explain trends and constants in attitudes, behaviors, and attributes; to examine the structure and functioning of society in general as well as the role played by relevant subgroups; to compare the United States to other societies in order to place American society in comparative perspective and develop cross-national models of human society; and to make high-quality data easily accessible to scholars, students, policy makers, and others, with minimal cost and waiting.</li><p></p>
+
+<p></p><li style="text-align: justify;" markdown="1">GSS questions include such items as national spending priorities, marijuana use, crime and punishment, race relations, quality of life, and confidence in institutions. Since 1988, the GSS has also collected data on sexual behavior including number of sex partners, frequency of intercourse, extramarital relationships, and sex with prostitutes. In 2014, additional questions addressed quality of working life, shared capitalism, wealth, work and family, social identity, social isolation, and civic participation. The 2016 GSS has modules on hope and optimism, arts participation, suicide, time use, social media, work flexavility, racial/ethnic identity, and health.</li><p></p>
+
+<pre><code class="r"><span class="comment">#summary(gss)</span>
+<span class="identifier">dim</span><span class="paren">(</span><span class="identifier">gss</span><span class="paren">)</span>  
+</code></pre>
+
+<pre><code>## [1] 57061   114
+</code></pre>
+
+<p></p><li style="text-align: justify;" markdown="1">
+The given GSS dataset contains 57,061 observation each represent an individual person in America which is less than 10% of entire American population; hence we can assume that the data is independent. From the NORC website we come to know that the survey data has been collected via web, mobile devices, telephone, mail, and in-person interviews; which is an indication of random sample to be used for this survey. Thus we can generalized our test result for all American population.
+</li>  <p></p>
+
+<p>Also we see there are 114 variables/features in the dataset. The <strong>Codebook</strong> of the GSS data can be accessed <a href="https://d18ky98rnyall9.cloudfront.net/_8abbe344133a7a8c98cfabe01a5075c2_gss.html?Expires=1467849600&amp;Signature=YIQ-vtlRC5qZ2Q6%7EuzIDZcnBCyGecfRTNivtcSm6o6smQ7Bzey7GywKehCg1YwgacSdehkJw1ODhNSXMaU7I93kvhDPtQwBANGJT4icpDyp0vIHKmlLOE4MpQaNAMzYT2u%7EudaBJZlY67-KWVHW0h49EvG%7EuMnID%7EGPGb6s5Ebk_&amp;Key-Pair-Id=APKAJLTNE6QMUY6HBC5A">here</a>.</p>
+
+<hr>
+
+<h2>Part 2: Research question</h2>
+
+<p>Does the General Social Survey data provides convincing evidence that the total family income varies across degree holders. Consider the latest year data for this analysis. Use the variable <strong>coninc</strong> for <em>Total family income in constant dollars</em> and <strong>degree</strong> for <em>highest degree</em> which is categotical.  </p>
+
+<hr>
+
+<h2>Part 3: Exploratory data analysis</h2>
+
+<p>Let's create a separate dataset for our analysis which contains only two variables - <strong>Total family income in constant dollars (coninc)</strong> which is a continuous variable and <strong>highest degree (degree)</strong> which is an ordinal (Categorical) variable. We have also removed NA from the dataset.</p>
+
+<pre><code class="r"><span class="identifier">ss</span> <span class="operator">&lt;-</span> <span class="identifier">gss</span> <span class="operator">%&gt;%</span>
+  <span class="identifier">select</span><span class="paren">(</span><span class="identifier">year</span>,<span class="identifier">degree</span>,<span class="identifier">coninc</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
+  <span class="identifier">filter</span><span class="paren">(</span><span class="identifier">year</span> <span class="operator">%in%</span> <span class="identifier">c</span><span class="paren">(</span><span class="number">2012</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
+  <span class="identifier">na.omit</span><span class="paren">(</span><span class="paren">)</span>
+<span class="identifier">ss</span><span class="operator">$</span><span class="identifier">year</span> <span class="operator">&lt;-</span> <span class="identifier">as.factor</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">year</span><span class="paren">)</span>
+<span class="identifier">summary</span><span class="paren">(</span><span class="identifier">ss</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##    year                 degree        coninc      
+##  2012:1752   Lt High School:230   Min.   :   383  
+##              High School   :881   1st Qu.: 16278  
+##              Junior College:132   Median : 34470  
+##              Bachelor      :324   Mean   : 48516  
+##              Graduate      :185   3rd Qu.: 63195  
+##                                   Max.   :178712
+</code></pre>
+
+<p><strong>Plotting the Data:</strong></p>
+
+<pre><code class="r"><span class="identifier">ggplot</span><span class="paren">(</span><span class="identifier">ss</span>,<span class="identifier">aes</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">degree</span>,<span class="identifier">y</span><span class="operator">=</span><span class="identifier">coninc</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">geom_boxplot</span><span class="paren">(</span><span class="identifier">aes</span><span class="paren">(</span><span class="identifier">fill</span><span class="operator">=</span><span class="identifier">degree</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">ggtitle</span><span class="paren">(</span><span class="string">"Family Income Vs. Degree"</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">labs</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="string">"Year"</span>,<span class="identifier">y</span><span class="operator">=</span><span class="string">"Family Income (in USD)"</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">theme</span><span class="paren">(</span><span class="identifier">plot.title</span> <span class="operator">=</span> <span class="identifier">element_text</span><span class="paren">(</span><span class="identifier">size</span> <span class="operator">=</span> <span class="number">20</span>, <span class="identifier">face</span> <span class="operator">=</span> <span class="string">"bold"</span><span class="paren">)</span><span class="paren">)</span>
+</code></pre>
+
+<p style="text-align: center;"><img src="data:image/png;base64,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" alt="plot of chunk plot"></p>
+
+<p>The above plot shows side-by-side bar plot of <strong>Total family income</strong> for each type of degree holder in the year 2012. 
+From the plot we see there are some differences but we are not very sure how different they are. For this we will fir the data in an ANOVA model and run a hypothesis test.</p>
+
+<p><strong>Summary Statistics:</strong></p>
+
+<pre><code class="r"><span class="identifier">ss</span> <span class="operator">%&gt;%</span>
+  <span class="identifier">group_by</span><span class="paren">(</span><span class="identifier">degree</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
+  <span class="identifier">summarise</span><span class="paren">(</span><span class="identifier">n</span><span class="operator">=</span><span class="identifier">n</span><span class="paren">(</span><span class="paren">)</span>,
+            <span class="identifier">mean</span><span class="operator">=</span><span class="identifier">mean</span><span class="paren">(</span><span class="identifier">coninc</span><span class="paren">)</span>,
+            <span class="identifier">sd</span><span class="operator">=</span><span class="identifier">sd</span><span class="paren">(</span><span class="identifier">coninc</span><span class="paren">)</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## # A tibble: 5 x 4
+##           degree     n     mean       sd
+##           &lt;fctr&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Lt High School   230 21214.41 22435.00
+## 2    High School   881 37453.19 34974.57
+## 3 Junior College   132 46362.46 39287.03
+## 4       Bachelor   324 75174.48 55495.55
+## 5       Graduate   185 89988.10 57720.44
+</code></pre>
+
+<p>Here we have summary statistics at the group level. Initial inspection of the data suggests that there are differences in the total family income for different degree holders but it is not so clear cut to determine whether the difference is statistically significance. To investigate these differences we fit the one-way ANOVA model. </p>
+
+<hr>
+
+<h2>Part 4: Inference</h2>
+
+<h4>4.1 Hypothesis Test</h4>
+
+<p>Our NULL hypothesis is that the average Family Income is the same accross all degree And the alternative hypothesis says that the average family income differ for at least a pair of degree.</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03BC;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03BC;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03BC;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;J&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03BC;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03BC;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;G&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 32.997em; display: inline-block;"><span style="display: inline-block; position: relative; width: 27.276em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.72em 1027.28em 3.055em -999.997em); top: -2.54em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="msubsup" id="MathJax-Span-3"><span style="display: inline-block; position: relative; width: 1.147em; height: 0px;"><span style="position: absolute; clip: rect(3.182em 1000.77em 4.199em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-4" style="font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.067em;"></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.702em;"><span class="mn" id="MathJax-Span-5" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">0</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-6" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">:</span><span class="msubsup" id="MathJax-Span-7" style="padding-left: 0.321em;"><span style="display: inline-block; position: relative; width: 4.58em; height: 0px;"><span style="position: absolute; clip: rect(3.373em 1000.51em 4.39em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-8" style="font-family: STIXGeneral-Italic;">μ</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.512em;"><span class="texatom" id="MathJax-Span-9"><span class="mrow" id="MathJax-Span-10"><span class="mi" id="MathJax-Span-11" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">L<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-12" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">t<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-13" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.067em;"></span></span><span class="mi" id="MathJax-Span-14" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">i</span><span class="mi" id="MathJax-Span-15" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-16" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">h</span><span class="mi" id="MathJax-Span-17" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">S<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-18" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">c</span><span class="mi" id="MathJax-Span-19" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">h</span><span class="mi" id="MathJax-Span-20" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-21" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-22" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-23" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">=</span><span class="msubsup" id="MathJax-Span-24" style="padding-left: 0.321em;"><span style="display: inline-block; position: relative; width: 4.008em; height: 0px;"><span style="position: absolute; clip: rect(3.373em 1000.51em 4.39em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-25" style="font-family: STIXGeneral-Italic;">μ</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.512em;"><span class="texatom" id="MathJax-Span-26"><span class="mrow" id="MathJax-Span-27"><span class="mi" id="MathJax-Span-28" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.067em;"></span></span><span class="mi" id="MathJax-Span-29" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">i</span><span class="mi" id="MathJax-Span-30" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-31" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">h</span><span class="mi" id="MathJax-Span-32" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">S<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-33" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">c</span><span class="mi" id="MathJax-Span-34" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">h</span><span class="mi" id="MathJax-Span-35" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-36" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-37" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-38" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">=</span><span class="msubsup" id="MathJax-Span-39" style="padding-left: 0.321em;"><span style="display: inline-block; position: relative; width: 4.708em; height: 0px;"><span style="position: absolute; clip: rect(3.373em 1000.51em 4.39em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-40" style="font-family: STIXGeneral-Italic;">μ</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.512em;"><span class="texatom" id="MathJax-Span-41"><span class="mrow" id="MathJax-Span-42"><span class="mi" id="MathJax-Span-43" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">J<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.067em;"></span></span><span class="mi" id="MathJax-Span-44" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">u</span><span class="mi" id="MathJax-Span-45" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">n</span><span class="mi" id="MathJax-Span-46" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">i</span><span class="mi" id="MathJax-Span-47" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-48" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">r<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-49" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">C<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-50" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-51" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-52" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-53" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">e</span><span class="mi" id="MathJax-Span-54" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-55" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">e</span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-56" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">=</span><span class="msubsup" id="MathJax-Span-57" style="padding-left: 0.321em;"><span style="display: inline-block; position: relative; width: 3.245em; height: 0px;"><span style="position: absolute; clip: rect(3.373em 1000.51em 4.39em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-58" style="font-family: STIXGeneral-Italic;">μ</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.512em;"><span class="texatom" id="MathJax-Span-59"><span class="mrow" id="MathJax-Span-60"><span class="mi" id="MathJax-Span-61" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">B</span><span class="mi" id="MathJax-Span-62" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">a</span><span class="mi" id="MathJax-Span-63" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">c</span><span class="mi" id="MathJax-Span-64" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">h</span><span class="mi" id="MathJax-Span-65" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">e</span><span class="mi" id="MathJax-Span-66" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-67" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-68" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">r<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-69" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">=</span><span class="msubsup" id="MathJax-Span-70" style="padding-left: 0.321em;"><span style="display: inline-block; position: relative; width: 3.373em; height: 0px;"><span style="position: absolute; clip: rect(3.373em 1000.51em 4.39em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-71" style="font-family: STIXGeneral-Italic;">μ</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.512em;"><span class="texatom" id="MathJax-Span-72"><span class="mrow" id="MathJax-Span-73"><span class="mi" id="MathJax-Span-74" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">G</span><span class="mi" id="MathJax-Span-75" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">r<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-76" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">a</span><span class="mi" id="MathJax-Span-77" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">d<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-78" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">u</span><span class="mi" id="MathJax-Span-79" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">a</span><span class="mi" id="MathJax-Span-80" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">t<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-81" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">e</span></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.546em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.458em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.312em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mrow class="MJX-TeXAtom-ORD"><mi>L</mi><mi>t</mi><mi>H</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>S</mi><mi>c</mi><mi>h</mi><mi>o</mi><mi>o</mi><mi>l</mi></mrow></msub><mo>=</mo><msub><mi>μ</mi><mrow class="MJX-TeXAtom-ORD"><mi>H</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>S</mi><mi>c</mi><mi>h</mi><mi>o</mi><mi>o</mi><mi>l</mi></mrow></msub><mo>=</mo><msub><mi>μ</mi><mrow class="MJX-TeXAtom-ORD"><mi>J</mi><mi>u</mi><mi>n</mi><mi>i</mi><mi>o</mi><mi>r</mi><mi>C</mi><mi>o</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>g</mi><mi>e</mi></mrow></msub><mo>=</mo><msub><mi>μ</mi><mrow class="MJX-TeXAtom-ORD"><mi>B</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>r</mi></mrow></msub><mo>=</mo><msub><mi>μ</mi><mrow class="MJX-TeXAtom-ORD"><mi>G</mi><mi>r</mi><mi>a</mi><mi>d</mi><mi>u</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">H_0: \mu_{Lt High School} = \mu_{High School} = \mu_{Junior College} = \mu_{Bachelor} = \mu_{Graduate}</script> </p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-82" role="math" style="width: 2.228em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.847em; height: 0px; font-size: 121%;"><span style="position: absolute; clip: rect(1.72em 1001.78em 2.864em -999.997em); top: -2.54em; left: 0.003em;"><span class="mrow" id="MathJax-Span-83"><span class="msubsup" id="MathJax-Span-84"><span style="display: inline-block; position: relative; width: 1.211em; height: 0px;"><span style="position: absolute; clip: rect(3.182em 1000.77em 4.199em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-85" style="font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.067em;"></span></span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -3.875em; left: 0.702em;"><span class="mi" id="MathJax-Span-86" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">A</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span><span class="mo" id="MathJax-Span-87" style="font-family: STIXGeneral-Regular; padding-left: 0.321em;">:</span></span><span style="display: inline-block; width: 0px; height: 2.546em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.227em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.158em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>H</mi><mi>A</mi></msub><mo>:</mo></math></span></span><script type="math/tex" id="MathJax-Element-2">H_A:</script> The average family income differ for at least a pair of group.</p>
+
+<h4>4.2 Condition check for ANOVA</h4>
+
+<p>Let's check the two conditions before fitting the data in an ANOVA model -<br>
+<strong>1. Independence:</strong><br>
+The data came from a simple random sample of all American population and our sample size is less than 10% of the total U.S. population, Hence we assume the observations are independent.</p>
+
+<p><strong>2. Normality:</strong><br>
+We can plot the histogram to have a visualization of the distribution.</p>
+
+<pre><code class="r"><span class="identifier">ggplot</span><span class="paren">(</span><span class="identifier">data</span><span class="operator">=</span><span class="identifier">ss</span>,<span class="identifier">aes</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">coninc</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">geom_histogram</span><span class="paren">(</span><span class="identifier">aes</span><span class="paren">(</span><span class="identifier">y</span><span class="operator">=</span><span class="identifier">..density</span>..<span class="paren">)</span>,<span class="identifier">binwidth</span> <span class="operator">=</span> <span class="number">15000</span>,<span class="identifier">col</span><span class="operator">=</span><span class="string">"red"</span>,<span class="identifier">fill</span><span class="operator">=</span><span class="string">"white"</span>,<span class="identifier">na.rm</span><span class="operator">=</span><span class="literal">TRUE</span><span class="paren">)</span> <span class="operator">+</span>
+  <span class="identifier">geom_density</span><span class="paren">(</span><span class="identifier">alpha</span><span class="operator">=</span><span class="number">0.2</span>,<span class="identifier">col</span><span class="operator">=</span><span class="string">"blue"</span>,<span class="identifier">fill</span><span class="operator">=</span><span class="string">"chocolate"</span>,<span class="identifier">na.rm</span><span class="operator">=</span><span class="literal">TRUE</span><span class="paren">)</span>
+</code></pre>
+
+<p style="text-align: center;"><img src="data:image/png;base64,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" alt="plot of chunk hist"></p>
+
+<p>Looks like the data is not normal, but we can also do a normal Q-Q plot for further checking of the normality.</p>
+
+<pre><code class="r"><span class="identifier">qqnorm</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">coninc</span><span class="paren">)</span>;<span class="identifier">qqline</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">coninc</span>,<span class="identifier">col</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+</code></pre>
+
+<p style="text-align: center;"><img src="data:image/png;base64,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" alt="plot of chunk q-q"></p>
+
+<p>Another way to check normality is to perform the Shapiro-Wilk test - </p>
+
+<pre><code class="r"><span class="identifier">shapiro.test</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">coninc</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  ss$coninc
+## W = 0.78426, p-value &lt; 2.2e-16
+</code></pre>
+
+<p>At 0.05 significance level, we reject the NULL hypothesis as the p-value is smaller then alpha and conclude that the data is not normally distributed.</p>
+
+<p>A more formal way of looking at the normality is by testing whether the kurtosis and skewness are significantly different from zero.</p>
+
+<pre><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">moments</span><span class="paren">)</span>
+<span class="identifier">skewness</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">coninc</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## [1] 1.671844
+</code></pre>
+
+<p>The skewness is far away from zero and it is positive which indicates, the data is right skewed, which we have also seen from the Histogram.</p>
+
+<pre><code class="r"><span class="identifier">kurtosis</span><span class="paren">(</span><span class="identifier">ss</span><span class="operator">$</span><span class="identifier">coninc</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## [1] 5.207436
+</code></pre>
+
+<p>The positive kurtosis means data has heavier tails and is more concentrated about the mean than a normal distribution. This type of distribution is called <strong>Leptokurtic</strong>.</p>
+
+<p><strong>3. Equal variance:</strong><br>
+There are many ways of testing data for homogeneity of variance. Three methods are shown here. For all these tests, the null hypothesis is that all populations variances are equal; the alternative hypothesis is that at least two of them differ.   </p>
+
+<ul>
+<li>Bartlett's test - If the data is normally distributed, this is the best test to use. It is sensitive to data which is not non-normally distribution; it is more likely to return a “false positive” when the data is non-normal.</li>
+</ul>
+
+<pre><code class="r"><span class="identifier">bartlett.test</span><span class="paren">(</span><span class="identifier">coninc</span><span class="operator">~</span><span class="identifier">degree</span>,<span class="identifier">data</span><span class="operator">=</span><span class="identifier">ss</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  coninc by degree
+## Bartlett's K-squared = 283.38, df = 4, p-value &lt; 2.2e-16
+</code></pre>
+
+<p>Note: With multiple independent variables, the <em>interaction()</em> function must be used to collapse the IV's into a single variable with all combinations of the factors. If it is not used, then the will be the wrong degrees of freedom, and the p-value will be wrong. for example <code>bartlett.test(coninc~interaction(degree,variable2),data=ss)</code>.   </p>
+
+<ul>
+<li>Levene's test - this is more robust to departures from normality than Bartlett's test. It is in the car package.</li>
+</ul>
+
+<pre><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">car</span><span class="paren">)</span>
+<span class="identifier">leveneTest</span><span class="paren">(</span><span class="identifier">coninc</span><span class="operator">~</span><span class="identifier">degree</span>,<span class="identifier">data</span><span class="operator">=</span><span class="identifier">ss</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## Levene's Test for Homogeneity of Variance (center = median)
+##         Df F value    Pr(&gt;F)    
+## group    4  54.076 &lt; 2.2e-16 ***
+##       1747                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+
+<p>Note: With two independent variables use <code>leveneTest(coninc~degree*variable2,data=ss)</code>  </p>
+
+<ul>
+<li>Fligner-Killeen test - this is a non-parametric test which is very robust against departures from normality. </li>
+</ul>
+
+<pre><code class="r"><span class="identifier">fligner.test</span><span class="paren">(</span><span class="identifier">coninc</span><span class="operator">~</span><span class="identifier">degree</span>,<span class="identifier">data</span><span class="operator">=</span><span class="identifier">ss</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## 
+##  Fligner-Killeen test of homogeneity of variances
+## 
+## data:  coninc by degree
+## Fligner-Killeen:med chi-squared = 224.35, df = 4, p-value &lt;
+## 2.2e-16
+</code></pre>
+
+<p>From all the above three test, we see the p-value is very small and hence reject the null hypothesis and conclude the variance are not equal. For this project we will still go with ANOVA but the result will not be reliable. </p>
+
+<h4>4.3 Method used (Theoritical or Simulation)</h4>
+
+<p>We will use theoritical method rather than using simulation as we have enough sample size. </p>
+
+<h4>4.4  Code and Output</h4>
+
+<p>To investigate the differences in total family income we fit the one-way ANOVA model using the <strong>lm()</strong> function and look at the parameter estimates and standard errors for the treatment effects. The function call is:</p>
+
+<pre><code class="r"><span class="identifier">fit</span> <span class="operator">=</span> <span class="identifier">lm</span><span class="paren">(</span><span class="identifier">coninc</span> <span class="operator">~</span> <span class="identifier">degree</span>, <span class="identifier">data</span> <span class="operator">=</span> <span class="identifier">ss</span><span class="paren">)</span>
+</code></pre>
+
+<p>We save the model fitted to the data in an object so that we can undertake various actions to study the goodness of the fit to the data and other model assumptions. The standard summary of a lm object is used to produce the following output:</p>
+
+<pre><code class="r"><span class="identifier">summary</span><span class="paren">(</span><span class="identifier">fit</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = coninc ~ degree, data = ss)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -87307 -25005 -10681  14252 157498 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             21214       2733   7.762 1.42e-14 ***
+## degreeHigh School       16239       3069   5.291 1.37e-07 ***
+## degreeJunior College    25148       4526   5.556 3.19e-08 ***
+## degreeBachelor          53960       3574  15.098  &lt; 2e-16 ***
+## degreeGraduate          68774       4094  16.800  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 41450 on 1747 degrees of freedom
+## Multiple R-squared:  0.2163, Adjusted R-squared:  0.2145 
+## F-statistic: 120.5 on 4 and 1747 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p>From the result, we notice that the p-value is very small; hence we reject the NULL hypothesis. The model output indicates some evidence of a difference in the average growth for the 4th group, which is <code>Graduate</code>,  compared to <code>Lt High School</code> group. An analysis of variance table for this model can be produced via the anova command:</p>
+
+<pre><code class="r"><span class="identifier">anova</span><span class="paren">(</span><span class="identifier">fit</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## Analysis of Variance Table
+## 
+## Response: coninc
+##             Df     Sum Sq    Mean Sq F value    Pr(&gt;F)    
+## degree       4 8.2832e+11 2.0708e+11  120.52 &lt; 2.2e-16 ***
+## Residuals 1747 3.0017e+12 1.7182e+09                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+
+<p>The function confint is used to calculate confidence intervals on the treatment parameters, by default 95% confidence intervals is used:</p>
+
+<pre><code class="r"><span class="identifier">confint</span><span class="paren">(</span><span class="identifier">fit</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##                         2.5 %   97.5 %
+## (Intercept)          15853.72 26575.10
+## degreeHigh School    10218.88 22258.69
+## degreeJunior College 16270.61 34025.50
+## degreeBachelor       46950.31 60969.83
+## degreeGraduate       60744.74 76802.64
+</code></pre>
+
+
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: STIXSizeOneSym, sans-serif;"></div></div></body><div></div></html>

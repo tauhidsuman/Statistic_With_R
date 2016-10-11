@@ -1,0 +1,169 @@
+---
+title: "Statistical inference with the GSS data"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+library(gmodels)
+```
+
+### Load data
+
+Make sure your data and R Markdown files are in the same directory. When loaded
+your data file will be called `gss`. Delete this note when before you submit 
+your work. 
+
+```{r load-data}
+load("gss.Rdata")
+```
+
+
+
+* * *
+
+## Part 1: Data
+Since 1972, the General Social Survey (GSS) has been monitoring societal change and studying the growing complexity of American society. The GSS aims to gather data on contemporary American society in order to monitor and explain trends and constants in attitudes, behaviors, and attributes; to examine the structure and functioning of society in general as well as the role played by relevant subgroups; to compare the United States to other societies in order to place American society in comparative perspective and develop cross-national models of human society; and to make high-quality data easily accessible to scholars, students, policy makers, and others, with minimal cost and waiting.
+
+**Generabizability: The data is collected by random sampling through the country. So, it has generabizability to some degree. But, to be noted, the data is gathered by survery, so the result may be not generabizable to the whole population. **
+
+**Causality: As it is an observation study, it can not lead to causality result.**
+
+* * *
+
+## Part 2: Research question
+
+**To see the status of gender equality in the USA. I want to know the distribution of highest degree between male and female is the same or not? And if the distribution is different, how is it changes over year?**
+
+
+* * *
+
+## Part 3: Exploratory data analysis
+First create a data frame for the research question.
+```{r}
+data <- gss %>% select(year, sex, degree) %>% filter(degree != "NA")
+str(data)
+```
+The data have 56051 observations and 3 variables. Let's see the summary statistics of the data. 
+```{r}
+summary(data)
+```
+
+```{r}
+ggMMplot <- function(var1, var2){
+  require(ggplot2)
+  levVar1 <- length(levels(var1))
+  levVar2 <- length(levels(var2))
+  
+  jointTable <- prop.table(table(var1, var2))
+  plotData <- as.data.frame(jointTable)
+  plotData$marginVar1 <- prop.table(table(var1))
+  plotData$var2Height <- plotData$Freq / plotData$marginVar1
+  plotData$var1Center <- c(0, cumsum(plotData$marginVar1)[1:levVar1 -1]) +
+    plotData$marginVar1 / 2
+  
+  ggplot(plotData, aes(var1Center, var2Height)) +
+    geom_bar(stat = "identity", aes(width = marginVar1, fill = var2), col = "White") +
+    geom_text(aes(label = as.character(var1), x = var1Center, y = 1.05), size = 4) 
+}
+
+```
+```{r}
+ggMMplot(data$sex, data$degree)+
+      xlab("Sex") +
+    ylab("Degree")
+```
+The plot shows the distribution of degree between male and female. we can see that, male's highest degree is higher than female in generally. 
+
+
+* * *
+
+## Part 4: Inference
+
+**I want to see are there significant difference in distribution of highest degree between male and female in 2012.**
+```{r}
+data2012 <- data %>% filter(year == 2012)
+```
+
+
+H0: The distribution of highest degree and sex are independent in 2012.
+
+HA: The distribution of highest degree and sex are dependent in 2012.
+
+As, it is a independence question. I would use the Chi-Square test for independence. 
+
+Condition Check:
+
+* Independence: The sample observations are independent. Checked
+1. It is random sampling
+2. n < 10% population
+3. each case only contributes to one cell
+
+* Sample size: each scenario have more than 5 cases. Checked
+```{r}
+table(data2012$sex, data2012$degree)
+```
+
+**Perform Inference**
+```{r}
+male <- sum(data2012$sex == "Male")
+female <- sum(data2012$sex == "Female")
+p <- male / (female + male)
+p
+```
+If in fact the distribution of highest degree and sex are dependent, how many people with graduate degree would we expected to be male? How many of the Bachelor, Junior College ...? 
+
+||Lt High School|High School|Junior College|Bachelor|Graduate|
+|-|-|-|-|-|-|
+|Male|132(126)|433(439)|60(68)|163(159)|95(93)|
+|Femal|148|543|91|191|110|
+
+Then, calculate the Chi-Square score
+```{r}
+CrossTable(data2012$sex, data2012$degree, expected = TRUE,prop.r = FALSE, prop.t = FALSE, prop.chisq = FALSE, chisq = TRUE)
+```
+
+The p-value = 0.614, the p-value is very big, we can not reject the null hypothesis. So the result suggest that the distribution of highest degree and sex are independent in 2012.
+
+
+**More research**
+I also make the same test in data on 1972
+```{r}
+data1972 <- data %>% filter(year == 1972)
+table(data1972$sex, data1972$degree)
+male <- sum(data1972$sex == "Male")
+female <- sum(data1972$sex == "Female")
+p <- male / (female + male)
+p
+
+```
+
+||Lt High School|High School|Junior College|Bachelor|Graduate|
+|-|-|-|-|-|-|
+|Male|279(291)|361(377)|8(9)|72(62)|42(26)|
+|Femal|308|401|9|52|10|
+```{r}
+CrossTable(data1972$sex, data1972$degree, expected = TRUE,prop.r = FALSE, prop.t = FALSE, prop.chisq = FALSE, chisq = TRUE)
+```
+
+p-value = 2.749214e-05, we could reject the null hypotheis. We can say that the distribution of highest degree and sex are dependent in 1972.
+
+The changes may dependent on the improvement on sex equlity.
+
+
+
+
+
+
+
+
