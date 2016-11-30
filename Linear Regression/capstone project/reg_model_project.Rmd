@@ -33,14 +33,14 @@ load("movies.Rdata")
 * * *
 
 ## Part 1: Data
-The data contains 651 randomly sampled movies released before 2016. So study based on the data would has generablizability. However, movies are rated by volunteers, so the data may contain volunteer bais. Data is not generated from experiment, it could only be used in oberservational study. So causality can not found from the data.
+This data contains 651 randomly sampled movies released before 2016. Studies based on the data would has generablizability. However, movies were rated by volunteers, so the data may contain volunteer bias. As the data is not got from experiment, it could only be used in oberservational study. So causality can not be found from the data.
 
 * * *
 
 ## Part 2: Research question
-what kind of variable affect imbd rating. Are imbd ratings infulenced by some other indicators besides movies' contents? And what are these indicators?
+what kind of variables affect imbd ratings. Are imbd ratings infulenced by some other indicators besides movies' contents? And what are these indicators?
 
-It is interesting to know whether movie's rating depends on its quality or some other kind of staff.
+It is interesting to know whether movie's rating only depends on its quality or not.
 
 
 * * *
@@ -136,7 +136,7 @@ Most coefficients in the model is statistical significiant refering to the p-val
 * * *
 
 ## Part 5: Prediction
-Recently, I just watch a very good animation "train to busan". I want to predict the rating of it.
+Recently, I just watch a very good movie called "train to busan". I want to predict the imdb rating of it.
 
 The final model is:
 imdb_rating ~ genre + runtime + thtr_rel_month + dvd_rel_day + 
