@@ -163,4 +163,5 @@ The predicted score is 7.72, and the real score is 7.8. The result shows that th
 * * *
 
 ## Part 6: Conclusion
+linear regression model is powerful enough for movies' scores prediction. Imdb rating is not only depended on subjective variables but also objective variables.
 

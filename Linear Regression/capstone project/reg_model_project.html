@@ -692,23 +692,29 @@ lm &lt;-<span class="st"> </span><span class="kw">lm</span>(imdb_rating ~<span c
 </div>
 <div id="part-5-prediction" class="section level2">
 <h2>Part 5: Prediction</h2>
-<p>Recently, I just watch a very good animation “釜山行”. I want to predict the rating of it.</p>
+<p>Recently, I just watch a very good animation “train to busan”. I want to predict the rating of it.</p>
 <p>The final model is: imdb_rating ~ genre + runtime + thtr_rel_month + dvd_rel_day + imdb_num_votes + critics_rating + critics_score + audience_rating + audience_score</p>
 <ul>
-<li>genre: Animation</li>
-<li>runtime: 106 min</li>
-<li>thtr_rel_month: 8</li>
+<li>genre: Action</li>
+<li>runtime: 118 min</li>
+<li>thtr_rel_month: 7</li>
 <li>dvd_rel_day: NA</li>
-<li>imdb_num_votes:</li>
-<li>critics_rating:</li>
-<li>critics_score:</li>
-<li>audience_rating:</li>
-<li>audience_score:</li>
+<li>imdb_num_votes: 11843</li>
+<li>critics_rating: Fresh</li>
+<li>critics_score: 93</li>
+<li>audience_rating: Upright</li>
+<li>audience_score: 90</li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">genre =</span> <span class="st">&quot;Action &amp; Adventure&quot;</span>, <span class="dt">runtime =</span> <span class="dv">118</span>, <span class="dt">thtr_rel_month =</span> <span class="dv">7</span>, <span class="dt">dvd_rel_day =</span> <span class="dv">0</span>, <span class="dt">imdb_num_votes =</span> <span class="dv">11843</span>, <span class="dt">critics_rating =</span> <span class="st">&quot;Fresh&quot;</span>, <span class="dt">critics_score =</span> <span class="dv">93</span>, <span class="dt">audience_rating =</span> <span class="st">&quot;Upright&quot;</span>, <span class="dt">audience_score =</span> <span class="dv">90</span>)
+<span class="kw">predict</span>(lm, newdata)</code></pre></div>
+<pre><code>##        1 
+## 7.720703</code></pre>
+<p>The predicted score is 7.72, and the real score is 7.8. The result shows that the model made a very good prediction to the imdb score of the movie “Train to busan”.</p>
 <hr />
 </div>
 <div id="part-6-conclusion" class="section level2">
 <h2>Part 6: Conclusion</h2>
+<p>linear regression model is powerful enough for movies’ scores prediction. Imdb rating is not only depended on subjective variables but also objective variables.</p>
 </div>
 
 
